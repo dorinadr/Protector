@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- playground-hide -->
+    <script>
+      const process = { env: {} };
+      process.env.GOOGLE_MAPS_API_KEY =
+        "AIzaSyDrG82xST1sruaSK3RLXKlYn1x4A_1SDng";
+    </script>
+    <!-- playground-hide-end -->
+  
+    <script type="module" src="./googlesamplemapsapi.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to The Protector </h1>
+        <h1><i class="fa-thin fa-building-shield"></i></h1>
+
+        <% if(typeof alert != 'undefined') { %>
+            <% alert.forEach(function(error) { %>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <%= error.msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+            <% }) %>
+        <% } %>
+        <div id="map"></div>
+      
+        <!-- 
+         The `defer` attribute causes the callback to execute after the full HTML
+         document has been parsed. For non-blocking uses, avoiding race conditions,
+         and consistent behavior across browsers, consider loading using Promises
+         with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+        -->
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrG82xST1sruaSK3RLXKlYn1x4A_1SDng&callback=initMap&v=weekly"
+          defer
+        ></script>
+    
+            <div class="form-group">
+                <label for="firstname" class="form-label">Firstname</label>
+                <input type="text" class="form-control" name="firstname" id="firstname">
+
+                <label for="lastname" class="form-label">Lastname</label>
+                <input type="text" class="form-control" name="lastname" id="lastname">
+                
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" name="email" id="email">
+
+                <label hidden for="latitude" class="form-label">Latitude</label>
+                <input hidden type="number" required=true class="form-control" name="latitude" id="latitude">
+
+                <label for="longitude" class="form-label" hidden>Longitude</label>
+                <input hidden type="number" required=true class="form-control" name="longitude" id="longitude">
+            </div>
+
+    
+            <button type="submit" class="btn btn-primary" onclick="setLocation(postToBackend)">Submit</button>
+  
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+</html>

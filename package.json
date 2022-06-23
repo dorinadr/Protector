@@ -1,0 +1,39 @@
+{
+  "name": "webservice",
+  "version": "1.0.0",
+  "description": "a web service for the BMCC directory app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewrubinstein/BMCCKoaWebService.git"
+  },
+  "author": "Andrew Rubinstein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewrubinstein/BMCCKoaWebService/issues"
+  },
+  "homepage": "https://github.com/andrewrubinstein/BMCCKoaWebService#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-router": "^0.0.1",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.1",
+    "mongoose": "^5.8.11",
+    "node-geocoder": "^4.0.0",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
