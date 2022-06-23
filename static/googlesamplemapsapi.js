@@ -9,7 +9,8 @@ function logToServer(data, path) {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
-    }).then(res => { console.log("Request complete! response:", data); });
+    }).then(res => { console.log("Request complete! response:",  res.body); });
+    console.log("sending to server: ", data);
 }
 function postToBackend(pos)  {
     const obj = {
@@ -21,7 +22,11 @@ function postToBackend(pos)  {
     }
     logToServer(obj, "/report");
 }
-function setLocation(next)  {
+setInterval(() => { 
+    if(document.getElementById("latitude").value == '')
+    {setLocation();}
+}, 1000);
+function setLocation()  {
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -33,11 +38,9 @@ function setLocation(next)  {
             infoWindow.setContent("Location found.");
             infoWindow.open(map);
             map.setCenter(pos);
-            console.log(pos)
-            if(next)
-            {
-                next(pos);
-            }
+            document.getElementById("latitude").value = pos.lat;
+            document.getElementById("longitude").value = pos.lng;
+            
         }, () => {
             handleLocationError(true, infoWindow, map.getCenter());
         });

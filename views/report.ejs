@@ -46,6 +46,7 @@
           defer
         ></script>
     
+        <form action="/report" method="POST">
             <div class="form-group">
                 <label for="firstname" class="form-label">Firstname</label>
                 <input type="text" class="form-control" name="firstname" id="firstname">
@@ -57,15 +58,15 @@
                 <input type="email" class="form-control" name="email" id="email">
 
                 <label hidden for="latitude" class="form-label">Latitude</label>
-                <input hidden type="number" required=true class="form-control" name="latitude" id="latitude">
+                <input hidden type="text" required=true class="form-control" name="latitude" id="latitude">
 
-                <label for="longitude" class="form-label" hidden>Longitude</label>
-                <input hidden type="number" required=true class="form-control" name="longitude" id="longitude">
+                <label hidden for="longitude" class="form-label">Longitude</label>
+                <input hidden type="text" required=true class="form-control" name="longitude" id="longitude">
             </div>
 
     
-            <button type="submit" class="btn btn-primary" onclick="setLocation(postToBackend)">Submit</button>
-  
+            <button type="submit" class="btn btn-primary" >Submit</button>
+            </form>
 
     </div>
 

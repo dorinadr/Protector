@@ -45,7 +45,7 @@ router.post('/report', [
     console.log(req.body);
     if(req.body.latitude && req.body.longitude)
     {
-        let report = await Models.report.findOne({latitude:req.latitude, longitude:req.body.logitude});
+        let report = await Models.report.findOne({latitude:req.body.latitude, longitude:req.body.logitude});
         if(!report)
           report = await new Models.report({gpsLocation:{latitude: req.body.latitude, longitude: req.body.longitude},
         email: req.body.email,
@@ -54,7 +54,6 @@ router.post('/report', [
             {questionText:"Do you smell gas?", answerText:req.body.question2Answer},
             {questionText:"Are you reporting from the location, about a gerneral vacinity or manually entering the address?", answerText:req.body.question3Answer}
         ]});
-        await report.save();
         console.log("hello report successful!", report);
     }
     res.render('report');
