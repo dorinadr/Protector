@@ -24,8 +24,19 @@ function postToBackend(pos)  {
 }
 setInterval(() => { 
     if(document.getElementById("latitude").value == '')
-    {setLocation();}
+    {
+        setLocation();
+        //update style here
+        const map = document.getElementById("map");
+        map.style = "";
+        //map.style.height = "50%";
+        //map.style.width = "50%";
+    }
 }, 1000);
+function hideMap(){
+    const map = document.getElementById("map");
+    map.style.display = "none";
+}
 function setLocation()  {
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
@@ -58,10 +69,10 @@ function initMap() {
     });
     infoWindow = new google.maps.InfoWindow();
     const locationButton = document.createElement("button");
-    locationButton.textContent = "Go to Current Location";
+    locationButton.textContent = "Set Current Location";
     locationButton.classList.add("custom-map-control-button");
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-    locationButton.addEventListener("click", setLocation);
+    locationButton.addEventListener("click", () => { setLocation(); hideMap(); });
 }
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);

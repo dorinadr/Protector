@@ -57,9 +57,11 @@ const UserSchema = new mongoose.Schema({
      //Reporting Model and schema
      const reportSchema = new mongoose.Schema(
         {
-           gpsLocation: {latitude:Number, longitude:Number},
+           latitude:Number, 
+           longitude:Number,
            email: String,
-           questions: [{questionText: String, answerText: String}]
+           firstName: String,
+           lastName: String
 
 
         }

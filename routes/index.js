@@ -45,16 +45,15 @@ router.post('/report', [
     console.log(req.body);
     if(req.body.latitude && req.body.longitude)
     {
-        let report = await Models.report.findOne({latitude:req.body.latitude, longitude:req.body.logitude});
-        if(!report)
-          report = await new Models.report({gpsLocation:{latitude: req.body.latitude, longitude: req.body.longitude},
-        email: req.body.email,
-        questions:[ 
-            {questionText:"Do you feel the effects of gas?", answerText:req.body.question1Answer},
-            {questionText:"Do you smell gas?", answerText:req.body.question2Answer},
-            {questionText:"Are you reporting from the location, about a gerneral vacinity or manually entering the address?", answerText:req.body.question3Answer}
-        ]});
+        let reportfound = await Models.report.findOne({latitude:req.body.latitude, longitude:req.body.logitude});
+        if(!reportfound){
+          const report = new Models.report({latitude: req.body.latitude, longitude: req.body.longitude,
+        email: req.body.email, firstName: req.body.firstname, lastName: req.body.lastname});
+        report.save().catch((error) => {
+          console.log(error);
+        });
         console.log("hello report successful!", report);
+        }
     }
     res.render('report');
   }
