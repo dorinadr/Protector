@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const router = express.Router();
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
@@ -36,7 +38,7 @@ router.post('/report', [
   if(!errors.isEmpty()) {
       // return res.status(422).jsonp(errors.array())
       const alert = errors.array();
-      res.render('report', {
+      res.render('reportmessage', {
           alert
       });
   }
@@ -55,7 +57,7 @@ router.post('/report', [
         console.log("hello report successful!", report);
         }
     }
-    res.render('report');
+    res.render('reportmessage');
   }
 })
 module.exports = router;

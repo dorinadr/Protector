@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="/report.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Report</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="style.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <!-- playground-hide -->
     <script>
@@ -49,7 +50,7 @@
         <form action="/report" method="POST">
             <div class="form-group">
                 <label for="firstname" class="form-label">Firstname</label>
-                <input type="text" class="form-control" name="firstname" id="firstname">
+                <input type="text" minlength="3" class="form-control" name="firstname" id="firstname">
 
                 <label for="lastname" class="form-label">Lastname</label>
                 <input type="text" class="form-control" name="lastname" id="lastname">
